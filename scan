@@ -1,0 +1,50 @@
+import pywifi
+from pywifi import const
+import time
+import pandas as pd
+import subprocess
+import sys
+import os
+os.system('cls')
+wifi = pywifi.PyWiFi()
+iface = wifi.interfaces()[1]
+#command = f'netsh wlan disconnect interface="Wi-Fi"'
+#result = subprocess.run(command, shell=True, capture_output=True, text=True)
+iface.scan()
+#time.sleep(7)
+results = iface.scan_results()
+wifi_list = []
+for  network in results:
+    wifi_list.append({
+    'SSID': network.ssid,
+    'MAC': network.bssid,
+    'Signal': network.signal
+    })
+df = pd.DataFrame(wifi_list)
+df = df.drop_duplicates(subset='MAC')
+os.system('clear')
+print("loading .")
+time.sleep(1)
+os.system('clear')
+print("loading . .")
+time.sleep(1)
+os.system('clear')
+print("loading . . .")
+time.sleep(1)
+os.system('clear')
+print("loading . . . .")
+time.sleep(1)
+os.system('clear')
+print("loading . . . . . ")
+time.sleep(1)
+os.system('clear')
+print("loading . . . . . .")
+time.sleep(1)
+os.system('clear')
+print("loading . . . . . . . .")
+time.sleep(0.4)
+os.system('clear')
+print("Wait _______________")
+time.sleep(0.5)
+os.system('clear')
+print(df)
